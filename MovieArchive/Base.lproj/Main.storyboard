@@ -129,6 +129,7 @@
                         <outlet property="imageView" destination="KUn-R9-0cm" id="WJS-yI-S6P"/>
                         <outlet property="imdbRating" destination="Wim-Dz-Q7f" id="48t-2z-AgA"/>
                         <outlet property="movieName" destination="WbH-aH-NAP" id="61F-IJ-x3x"/>
+                        <outlet property="saveButton" destination="1jz-Tv-Cr5" id="XiJ-4A-S1X"/>
                         <outlet property="year" destination="cnX-EZ-Jfc" id="Mdx-Sg-1yz"/>
                     </connections>
                 </viewController>

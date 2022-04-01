@@ -16,6 +16,7 @@ class DetailsVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     @IBOutlet weak var director: UITextField!
     var chosenMovie = ""
     var chosenMovieId : UUID?
+    @IBOutlet weak var saveButton: UIButton!
     
     
     
@@ -31,6 +32,7 @@ class DetailsVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
         
         
         if chosenMovie != "" {
+            saveButton.isHidden = true
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
