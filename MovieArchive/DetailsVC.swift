@@ -67,6 +67,14 @@ class DetailsVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
         let data = imageView.image?.jpegData(compressionQuality: 0.5)
         newMovie.setValue(data, forKey: "image")
         self.navigationController?.popViewController(animated: true)
+        do{
+            try context.save()
+            print("success")
+        }catch{
+            print("error")
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name("newData"), object: nil)
     }
     
    
