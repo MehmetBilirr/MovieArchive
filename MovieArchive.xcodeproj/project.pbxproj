@@ -14,6 +14,7 @@
 		F0C2703227F772C60016A801 /* MovieArchive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0C2703027F772C60016A801 /* MovieArchive.xcdatamodeld */; };
 		F0C2703427F772C60016A801 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0C2703327F772C60016A801 /* Assets.xcassets */; };
 		F0C2703727F772C60016A801 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C2703527F772C60016A801 /* LaunchScreen.storyboard */; };
+		F0C2704127F7749F0016A801 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C2704027F7749F0016A801 /* DetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		F0C2703327F772C60016A801 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0C2703627F772C60016A801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0C2703827F772C60016A801 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0C2704027F7749F0016A801 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				F0C2702727F772C60016A801 /* AppDelegate.swift */,
 				F0C2702927F772C60016A801 /* SceneDelegate.swift */,
 				F0C2702B27F772C60016A801 /* ViewController.swift */,
+				F0C2704027F7749F0016A801 /* DetailsVC.swift */,
 				F0C2702D27F772C60016A801 /* Main.storyboard */,
 				F0C2703327F772C60016A801 /* Assets.xcassets */,
 				F0C2703527F772C60016A801 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				F0C2702827F772C60016A801 /* AppDelegate.swift in Sources */,
 				F0C2702A27F772C60016A801 /* SceneDelegate.swift in Sources */,
 				F0C2703227F772C60016A801 /* MovieArchive.xcdatamodeld in Sources */,
+				F0C2704127F7749F0016A801 /* DetailsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
