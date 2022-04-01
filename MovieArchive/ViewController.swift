@@ -13,6 +13,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var tableView: UITableView!
     var nameArray = [String]()
     var idArray = [UUID]()
+    var selectedMovie = ""
+    var selectedMovieId : UUID?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +26,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
         getData()
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsVC" {
+            let destinationVC = segue.destination as! DetailsVC
+            destinationVC.chosenMovie = selectedMovie
+            destinationVC.chosenMovieId = selectedMovieId
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMovie = nameArray[indexPath.row]
+        selectedMovieId = idArray[indexPath.row]
+        performSegue(withIdentifier: "toDetailsVC", sender: nil)
+        
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name("newData"), object: nil)
@@ -40,6 +60,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @objc func addButtonClicked(){
+        selectedMovie = ""
         performSegue(withIdentifier: "toDetailsVC", sender: nil)
         
     }

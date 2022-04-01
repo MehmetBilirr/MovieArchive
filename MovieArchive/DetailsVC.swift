@@ -14,6 +14,8 @@ class DetailsVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     @IBOutlet weak var imdbRating: UITextField!
     @IBOutlet weak var year: UITextField!
     @IBOutlet weak var director: UITextField!
+    var chosenMovie = ""
+    var chosenMovieId : UUID?
     
     
     
@@ -26,6 +28,44 @@ class DetailsVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
         imageView.isUserInteractionEnabled = true
         let gestureImageRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectImage))
         imageView.addGestureRecognizer(gestureImageRecognizer)
+        
+        
+        if chosenMovie != "" {
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Movies")
+            fetchRequest.returnsObjectsAsFaults = false
+            let idString = chosenMovieId?.uuidString
+            fetchRequest.predicate = NSPredicate(format: "id = %@", idString!)
+            do{
+                let results = try context.fetch(fetchRequest)
+                if results.count > 0 {
+                    for result in results as! [NSManagedObject]{
+                        
+                        if let name = result.value(forKey: "name") as? String {
+                            self.movieName.text = name
+                        }
+                        if let yeartext = result.value(forKey: "year") as? Int{
+                            self.year.text = String(yeartext)
+                        }
+                        if let directorname = result.value(forKey: "director") as? String{
+                            self.director.text = directorname
+                        }
+                        if let imdb = result.value(forKey: "imdb") as? Double {
+                            self.imdbRating.text = String(imdb)
+                        }
+                        if let imageData = result.value(forKey: "image") as? Data {
+                            let image = UIImage(data: imageData)
+                            self.imageView.image = image
+                        }
+                    }
+                }
+            }catch{
+                print("error")
+            }
+            
+        }
         
     }
     
