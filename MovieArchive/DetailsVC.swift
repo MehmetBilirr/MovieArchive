@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailsVC: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
     @IBOutlet weak var imageView: UIImageView!
@@ -49,6 +50,23 @@ class DetailsVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     }
     
     @IBAction func saveButton(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let newMovie = NSEntityDescription.insertNewObject(forEntityName: "Movies", into: context)
+        newMovie.setValue(movieName.text, forKey: "name")
+        if let newYear = Int(year.text!){
+            newMovie.setValue(newYear, forKey: "year")
+            
+        }
+        if let imdb = Double(imdbRating.text!){
+            newMovie.setValue(imdb, forKey: "imdb")
+            
+        }
+        newMovie.setValue(director.text, forKey: "director")
+        newMovie.setValue(UUID(), forKey: "id")
+        let data = imageView.image?.jpegData(compressionQuality: 0.5)
+        newMovie.setValue(data, forKey: "image")
+        self.navigationController?.popViewController(animated: true)
     }
     
    
