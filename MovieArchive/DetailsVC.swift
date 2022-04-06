@@ -92,6 +92,18 @@ class DetailsVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
     }
     
     @IBAction func saveButton(_ sender: Any) {
+        
+        if movieName.text == "" {
+            makeAlert(titleInput: "Error!", messageInput: "Movie Name is empty")
+        } else if year.text == "" {
+            makeAlert(titleInput: "Error!", messageInput: "Year is empty")
+        }else if imdbRating.text == "" {
+            makeAlert(titleInput: "Error!", messageInput: "Imdb rating is empty")
+        }else if director.text == "" {
+            makeAlert(titleInput: "Error!", messageInput: "Director is empty")
+        }
+        
+        if movieName.text != "" && year.text != "" && imdbRating.text != "" && director.text != "" {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let newMovie = NSEntityDescription.insertNewObject(forEntityName: "Movies", into: context)
@@ -115,8 +127,16 @@ class DetailsVC: UIViewController,UINavigationControllerDelegate,UIImagePickerCo
         }catch{
             print("error")
         }
+        }
         
         NotificationCenter.default.post(name: NSNotification.Name("newData"), object: nil)
+    }
+    
+    func makeAlert(titleInput:String,messageInput:String){
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel)
+        alert.addAction(okButton)
+        self.present(alert, animated: true)
     }
     
    
